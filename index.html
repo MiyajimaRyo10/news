@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y!ニュース風サイト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 日本語フォントがInterに含まれていないため、システムUIのフォントを優先的に使用 */
+        body {
+            font-family: 'Inter', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* タブのボーダー */
+        .tab-border-active {
+            border-bottom: 3px solid #FF0000;
+            color: #FF0000;
+            font-weight: 600;
+        }
+        .tab-border {
+            border-bottom: 3px solid transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="max-w-2xl mx-auto bg-white min-h-screen shadow-lg">
+        <!-- メインページ (ニュース一覧) -->
+        <div id="main-page">
+            <!-- ヘッダー -->
+            <header class="bg-white shadow-sm sticky top-0 z-10">
+                <div class="p-3 flex justify-between items-center">
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        <h1 class="text-2xl font-bold text-red-600">Y!ニュース</h1>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <!-- 通知アイコンの光るエフェクトを削除 -->
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                        <div class="w-6 h-6 bg-red-600 text-white flex items-center justify-center rounded-full text-sm font-bold">Y!</div>
+                    </div>
+                </div>
+
+                <!-- ナビゲーションタブ -->
+                <nav class="border-b">
+                    <div class="flex justify-between items-center text-sm text-gray-600 overflow-x-auto">
+                        <a href="#" class="px-4 py-2 tab-border-active whitespace-nowrap">主要</a>
+                        <a href="#" class="px-4 py-2 tab-border whitespace-nowrap">ヤフコメ</a>
+                        <a href="#" class="px-4 py-2 tab-border whitespace-nowrap">エンタメ</a>
+                        <a href="#" class="px-4 py-2 tab-border whitespace-nowrap">スポーツ</a>
+                        <a href="#" class="px-4 py-2 tab-border whitespace-nowrap">経済</a>
+                        <a href="#" class="px-4 py-2 tab-border whitespace-nowrap">国内</a>
+                        <a href="#" class="px-4 py-2 tab-border whitespace-nowrap">国際</a>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- メインコンテンツ -->
+            <main class="p-2" id="article-list">
+                <!-- トップニュース -->
+                <article data-id="0" class="mb-4 rounded-lg overflow-hidden border cursor-pointer">
+                    <img src="https://placehold.co/600x300/d1d5db/374151?text=石川・小松市" alt="[画像: 猛暑の街並み]" class="w-full h-auto">
+                    <div class="p-3">
+                        <h2 class="text-xl font-bold mb-2">石川・小松市で40.3℃ 熱中症警戒</h2>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <span>💬 301+解説</span>
+                            <span class="mx-2">|</span>
+                            <span>1時間前</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 記事一覧 -->
+                <div class="space-y-1">
+                    <article data-id="1" class="flex items-center bg-white p-2 rounded-lg border cursor-pointer">
+                        <img src="https://placehold.co/100x100/d1d5db/374151?text=VR体験" alt="[画像: VRゴーグルを装着した人々]" class="w-20 h-20 rounded-md object-cover">
+                        <div class="ml-3 flex-1">
+                            <h3 class="font-semibold text-base leading-tight">うめき声に猛火 被爆体験をVR化</h3>
+                            <div class="flex items-center text-xs text-gray-500 mt-1">
+                                <span>💬 397+解説</span>
+                                <span class="mx-2">|</span>
+                                <span>1時間前</span>
+                                <span class="ml-2 px-2 py-0.5 bg-red-100 text-red-600 text-xs font-semibold rounded-full">NEW</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article data-id="2" class="flex items-center bg-white p-2 rounded-lg border cursor-pointer">
+                        <img src="https://placehold.co/100x100/d1d5db/374151?text=ガソリンスタンド" alt="[画像: ガソリンスタンド]" class="w-20 h-20 rounded-md object-cover">
+                        <div class="ml-3 flex-1">
+                            <h3 class="font-semibold text-base leading-tight">ロシア 8月ガソリン不足の可能性</h3>
+                            <div class="flex items-center text-xs text-gray-500 mt-1">
+                                <span>💬 298+解説</span>
+                                <span class="mx-2">|</span>
+                                <span>1時間前</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <button class="w-full mt-4 py-3 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition-colors">
+                    もっと見る
+                </button>
+            </main>
+        </div>
+
+        <!-- 詳細ページ (初期状態では非表示) -->
+        <div id="detail-page" class="hidden">
+            <header class="bg-white shadow-sm sticky top-0 z-10 p-3 flex justify-between items-center">
+                <button id="back-button" class="flex items-center">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span class="ml-2 text-gray-800">戻る</span>
+                </button>
+                <h1 class="text-lg font-bold text-red-600">Y!ニュース</h1>
+                <div class="w-12"></div> <!-- 右側のスペース確保用 -->
+            </header>
+            <main class="p-4">
+                <h2 id="detail-title" class="text-2xl font-bold mb-2"></h2>
+                <div class="text-xs text-gray-500 mb-4">
+                    <span id="detail-source"></span>
+                    <span class="mx-2">|</span>
+                    <span id="detail-time"></span>
+                </div>
+                <img id="detail-image" src="" alt="記事の画像" class="w-full h-auto rounded-lg mb-4">
+                <p id="detail-body" class="text-gray-800 leading-relaxed mb-6">
+                </p>
+
+                <!-- コメントセクション -->
+                <div id="comment-section" class="mt-8 pt-6 border-t">
+                    <h3 class="text-lg font-bold mb-4">コメント</h3>
+                    <div class="space-y-5">
+                        <!-- サンプルコメント 1 -->
+                        <div class="flex items-start">
+                            <img src="https://placehold.co/40x40/e2e8f0/64748b?text=T" alt="ユーザーアイコン" class="w-10 h-10 rounded-full mr-3 flex-shrink-0">
+                            <div>
+                                <p class="font-semibold text-sm">田中 太郎</p>
+                                <p class="text-gray-800 mt-1">これは大変なニュースですね。現地の方々が心配です。</p>
+                                <div class="flex items-center text-xs text-gray-500 mt-2 space-x-4">
+                                    <span>返信</span>
+                                    <span>👍 123</span>
+                                    <span>👎 5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- サンプルコメント 2 -->
+                        <div class="flex items-start">
+                            <img src="https://placehold.co/40x40/e2e8f0/64748b?text=Y" alt="ユーザーアイコン" class="w-10 h-10 rounded-full mr-3 flex-shrink-0">
+                            <div>
+                                <p class="font-semibold text-sm">山田 花子</p>
+                                <p class="text-gray-800 mt-1">VR技術がこんな風に使われるなんて、素晴らしい試みだと思います。</p>
+                                <div class="flex items-center text-xs text-gray-500 mt-2 space-x-4">
+                                    <span>返信</span>
+                                    <span>👍 88</span>
+                                    <span>👎 2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- コメント投稿フォーム -->
+                    <div class="mt-8">
+                        <textarea class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" rows="3" placeholder="コメントを投稿する"></textarea>
+                        <!-- ボタンの親要素をFlexboxコンテナにして右寄せ -->
+                        <div class="flex justify-end">
+                            <button class="mt-2 px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                                投稿する
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // --- データ ---
+        const articles = [
+            {
+                id: 0,
+                title: "石川・小松市で40.3℃ 熱中症警戒",
+                image: "https://placehold.co/600x300/d1d5db/374151?text=石川・小松市",
+                source: "気象庁",
+                time: "8/4(月) 14:30",
+                body: "石川県小松市で午後2時過ぎに気温が40.3℃に達しました。これは今年の全国最高気温を更新するものです。気象庁は熱中症への厳重な警戒を呼びかけています。こまめな水分補給や、不要不急の外出を控えるなどの対策が必要です。"
+            },
+            {
+                id: 1,
+                title: "うめき声に猛火 被爆体験をVR化",
+                image: "https://placehold.co/600x300/d1d5db/374151?text=VR体験",
+                source: "毎日新聞",
+                time: "8/4(月) 15:00",
+                body: "被爆80年を迎え、記憶の継承が課題となる中、VR（仮想現実）やAI（人工知能）といった最新のデジタル技術を活用して被爆体験を伝えようとする試みが始まっています。体験者はVRゴーグルを装着し、当時の惨状を追体験します。"
+            },
+            {
+                id: 2,
+                title: "ロシア 8月ガソリン不足の可能性",
+                image: "https://placehold.co/600x300/d1d5db/374151?text=ガソリンスタンド",
+                source: "ロイター",
+                time: "8/4(月) 13:00",
+                body: "ロシア国内で製油所のメンテナンスが相次いでおり、8月にはガソリンが不足する可能性があると業界関係者が指摘しています。政府は輸出制限などの対策を検討している模様です。"
+            }
+        ];
+
+        // --- DOM要素の取得 ---
+        const mainPage = document.getElementById('main-page');
+        const detailPage = document.getElementById('detail-page');
+        const articleList = document.getElementById('article-list');
+        const backButton = document.getElementById('back-button');
+
+        // --- 詳細ページの要素 ---
+        const detailTitle = document.getElementById('detail-title');
+        const detailImage = document.getElementById('detail-image');
+        const detailSource = document.getElementById('detail-source');
+        const detailTime = document.getElementById('detail-time');
+        const detailBody = document.getElementById('detail-body');
+
+        // --- イベントリスナー ---
+        articleList.addEventListener('click', (e) => {
+            const articleElement = e.target.closest('article');
+            if (!articleElement) return;
+
+            const articleId = articleElement.dataset.id;
+            const articleData = articles.find(a => a.id == articleId);
+
+            if (articleData) {
+                detailTitle.textContent = articleData.title;
+                detailImage.src = articleData.image;
+                detailSource.textContent = articleData.source;
+                detailTime.textContent = articleData.time;
+                detailBody.textContent = articleData.body;
+
+                mainPage.classList.add('hidden');
+                detailPage.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            }
+        });
+
+        backButton.addEventListener('click', () => {
+            detailPage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+        });
+
+    </script>
+</body>
+</html>
